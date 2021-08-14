@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize('postgres://postgres:veigar93@localhost:5432/pi')
 const c = require('../controllers/axios.controller')
+let data = require('../routes/index')
 let allCountries;
 let countries;
 class Countries extends Sequelize.Model {}
@@ -69,9 +70,50 @@ TouristicActivity.belongsToMany(Countries, {
     through: 'Countrie_Activity'
 })
 
-sequelize.sync({
-    alter: true
-}).then(async () => {
+
+let UpdateDB  = (data) => {
+    sequelize.sync({
+        alter: true
+    }).then(async () => {
+        let countrie = await Countries.findOne({ where: { name: data.countrie } })
+            if (countrie){
+              let  TA = await TouristicActivity.create({
+                    name: data.name,
+                    dificult: data.dificult,
+                   duration: data.duration,
+                   season: data.season 
+                })
+               await countrie.addTouristicActivity(TA);
+             }
+    })
+}
+
+
+   
+let DbDataCountries =  Countries.findAll({
+    include: [TouristicActivity],
+    attributes: ['ID', 'name', 'flag', 'continent', 'capital', 'subregion', 'area', 'population'],
+    
+}).then (function (result) {
+    let DbGetCountries = JSON.stringify(result)
+    return DbGetCountries
+})
+
+console.log('aaaaa', data)
+
+module.exports = {
+    DbDataCountries, 
+    UpdateDB
+};
+
+
+
+
+
+//el code de como meti la data a la db (no lo borro porque le agarre cari;o)
+// sequelize.sync({
+//     alter: true
+// }).then(async () => {
 
     // allCountries = await c()
     // console.log(allCountries.length)
@@ -97,34 +139,5 @@ sequelize.sync({
 //         })
 //        await countrie.addTouristicActivity(TA);
 //     }
-let prueba =  await Countries.findByPk(1, {include:[TouristicActivity]}).then(function (result) {
-    let pruebaget = JSON.stringify(result)
+//})
 
-    return pruebaget
-})
-console.log(prueba)
-   
-})
-let DbDataCountries =  Countries.findAll({
-    include: [TouristicActivity],
-    attributes: ['ID', 'name', 'flag', 'continent', 'capital', 'subregion', 'area', 'population'],
-    
-}).then (function (result) {
-    let DbGetCountries = JSON.stringify(result)
-    return DbGetCountries
-})
-
-
-module.exports = DbDataCountries;
-
-
-
-// allCountries.map(async data => {
-//     let response = await Countries.create({
-//         ID: data.id,
-//         name: data.name,
-//         flag: data.flag
-//     })
-//     return response;
-// })
-// console.log(countries)

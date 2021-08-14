@@ -3,8 +3,13 @@ const {
 } = require('express');
 const router = Router();
 const axios = require('axios')
-const getCountries = require('../controllers/axios.controller')
-const getCountriesFromDb = require('../database/database.js')
+// const getCountries = require('../controllers/axios.controller')
+const {DbDataCountries }= require('../database/database.js')
+let  getCountriesFromDb = DbDataCountries
+let {UpdateDB} = require('../database/database')
+
+let data;
+
 
 router.get('/', (req, res) => {
     res.json({
@@ -70,6 +75,29 @@ router.get('/countries/:id', async function (req, res) {
 
 })
 
+router.post('/countries', function (req, res) {
+let {nameCountrie, name, dificult, season, duration} = req.body;
+
+if(nameCountrie && name && duration && dificult && season){
+    data = {
+        countrie: nameCountrie,
+        name: name,
+        dificult: dificult,
+        season: season,
+        duration: duration
+    }
+    if(data) {
+        UpdateDB(data)
+        res.status(200).json({msg: "Actividad agregada correctamente"})
+        
+        
+    } else {
+        res.status(404).json({msg: 'Faltan parametros'})
+    }
+}else {
+    res.status(404).json({msg: 'Faltan parametros'})
+
+}})
 
 
-module.exports = router
+module.exports = router;
