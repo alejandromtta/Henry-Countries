@@ -1,8 +1,8 @@
 import {Link} from 'react-router-dom';
-export default function Countrie({name,countrie,flag,population}) {
+export default function Countrie({name,id,flag,population}) {
 return (
-    <div>
-        <Link to={`/home/${name}`}>
+    <div >
+        <Link to={`/home/${id}`}>
         <img src={flag} alt='uwu' width="300" height="300"/>
         </Link>
         <h4>{name}</h4>

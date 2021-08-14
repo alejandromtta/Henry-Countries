@@ -13,7 +13,7 @@ obtenerDatos()
 },[])
 
 const obtenerDatos = async () => {
-    const data = await axios.get(`http://localhost:3000/countries?name=${id}`)
+    const data = await axios.get(`http://localhost:3000/countries/${id}`)
     setCountries(oldCountrie => data.data)  
              
 }

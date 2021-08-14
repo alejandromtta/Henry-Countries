@@ -8,7 +8,8 @@ export default function Countries ({countries}) {
         {countries[0].map(c => <Countrie
         name = {c.name}
         flag = {c.flag}
-        population = {c.population}/>
+        population = {c.population}
+        id= {c.ID}/>
         )}
             </div>)
    } else {
