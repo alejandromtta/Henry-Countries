@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+.nav{
+display: flex;
+height:6vh;
+background-color:#e0c8c8;
+align-items: left;
+}
+
+.btn{
+    border:none;
+    background-color:#e0c8c8;
+    padding: 1.7vh;
+    margin-left:1vh;
+    font-family:'Inconsolata', monospace;
+    font-size: 16px;
+    font-style: strong;
+
+} 
+.btn:hover { 
+    background: rgb(211, 161, 161);
+}

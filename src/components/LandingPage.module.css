@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
+.container {
+   
+    display: flex;
+    flex-direction: row-reverse;
+    margin:0px;
+  color:rgb(41, 41, 41);
+  justify-content: center;
+ background-color: rgb(255, 242, 242);
+  height:100vh;
+ 
+}
+
+.welcome {
+    margin-top: 30vh;
+    margin-left:1vh;
+    padding:1vh;
+    text-align: center;
+    font-family:'Inconsolata', monospace;
+    font-size: 17px;
+}
+.img{
+    margin:10vh;
+    margin-top: 22vh;
+    height:50vh;
+    width: 70vh;
+    color:solid;
+    border-radius: 38px;
+    background: linear-gradient(145deg, #ffecec, #dbc7c7);
+    box-shadow:  41px 41px 82px #cfbcbc,
+                 -41px -41px 82px #fffefe;
+    padding:2.4vh;
+} 
+.bttn{
+    border-radius: 50px;
+    background: #f3dddd;
+    box-shadow:  25px 25px 50px #cfbcbc,
+                 -25px -25px 50px #fffefe;
+    text-decoration: none; 
+    border: none;   
+    padding:1.5vh;
+    border-radius: 1vh;
+    font-family:'Inconsolata', monospace;
+    
+}
+.bttn:hover{
+    background: rgb(211, 161, 161);
+}
+.h4 {
+    font-size: 19px;
+    margin-bottom: 9%;
+}
+@media  (max-width:650px){
+    .container {
+        flex-direction:column;
+        text-align: center;
+        align-items: center;
+        height:100vh;
+        
+    }
+    .welcome {
+        margin-top:-12vh;
+        padding:12vh;
+    }
+    .h4 {
+        font-size: 19px;
+        margin-bottom: 15%;
+    }
+    .img{
+        margin:1.7vh;
+        margin-top: 19vh;
+        height:30vh;
+        width: 40vh;
+        color:solid;
+        background-color:solid;
+        
+    } 
+}

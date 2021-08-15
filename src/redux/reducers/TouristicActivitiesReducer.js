@@ -1,18 +1,23 @@
-import { POST_ACTIVITY } from "../actions/TouristicActivities"
+import { POST_ACTIVITY, GET_COUNTRIES } from "../actions/TouristicActivities"
 
-const default_activity = {
-    countrie:'',
-    name: '',
-    dificult: '',
-    duration: '',
-    season: ''
-}
+const initialState = {
+  countries: [],
+  countryDetail: {},
+  activities: [],
+  ord: null,
+  asc: true,
+};
 
-const activity_reducer = (state = default_activity, action) => {
+const activity_reducer = (state = initialState, action) => {
   switch (action.type) {
-      case POST_ACTIVITY: {
-          return 
+      case GET_COUNTRIES: {
+          return {
+            ...state,
+            countries: action.payload,
+          };
       }
-        default: return state
+        default: {
+          return state
+        }
   }  
 }
