@@ -1,4 +1,5 @@
 import './App.css';
+import React from "react";
 import LandingPage from './components/LandingPage'
 import {Route} from 'react-router-dom';
 import HomePage from './components/HomePage'
@@ -8,6 +9,7 @@ import TouristicForm from "./components/TouristicForm"
 import About from "./components/About"
 function App() {
   return (
+    <React.Fragment>
     <div className="App">
       <Route exact path="/" component={LandingPage} />
       <Route  path="/." component={NavBar} />
@@ -19,6 +21,7 @@ function App() {
       <SpecificCountrie/>
         </Route> 
     </div>
+    </React.Fragment>
   );
 }
 

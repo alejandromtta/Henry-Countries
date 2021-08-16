@@ -1,4 +1,4 @@
-import { POST_ACTIVITY, GET_COUNTRIES } from "../actions/TouristicActivities"
+import { POST_ACTIVITY, GET_COUNTRIES, GET_COUNTRIES_ID } from "../actions/TouristicActivities"
 
 const initialState = {
   countries: [],
@@ -8,7 +8,7 @@ const initialState = {
   asc: true,
 };
 
-const activity_reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
       case GET_COUNTRIES: {
           return {
@@ -16,8 +16,16 @@ const activity_reducer = (state = initialState, action) => {
             countries: action.payload,
           };
       }
+      case GET_COUNTRIES_ID: {
+          return {
+            ...state,
+            countryDetail: action.payload
+          }
+      }
         default: {
           return state
         }
   }  
 }
+
+export default reducer;

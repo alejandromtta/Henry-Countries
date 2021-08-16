@@ -4,22 +4,28 @@ import {useState} from 'react'
 export default function Countries ({countries}) {
 
     let [pageNumber, setPageNumber] = useState(0)
+let countrieResult = countries
 
-    
+    console.log(countries)
 
-   if(typeof countries[0] == 'object' && typeof countries[0][0] == 'object'){
+   if(!countrieResult.error){
     let countriesPerPage = 9;
     let pagesVisited = pageNumber * countriesPerPage
-    const displayCountries = countries[0].slice(pagesVisited, pagesVisited + countriesPerPage).map(c =>{
-         return   <Countrie
+    const displayCountries = countries.slice(pagesVisited, pagesVisited + countriesPerPage).map((c, i) =>{
+        console.log(i)
+        return  <div className={i}>
+
+        <Countrie
             name = {c.name}
             flag = {c.flag}
             continent = {c.continent}
-            id= {c.ID}/>
-          
-            console.log(c)
+            id= {c.ID}
+            keys={i}
+            />
+           </div>
+            
     })
-    const pageCount = Math.ceil(countries[0].length / countriesPerPage)
+    const pageCount = Math.ceil(countries.length / countriesPerPage)
     const changePage = ({selected}) => { 
         setPageNumber(selected)
     }
