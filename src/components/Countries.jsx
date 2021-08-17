@@ -1,8 +1,8 @@
+import style from './Countries.module.css'
 import ReactPaginate from 'react-paginate'
 import Countrie from './Countrie'
 import {useState} from 'react'
 export default function Countries ({countries}) {
-
     let [pageNumber, setPageNumber] = useState(0)
 let countrieResult = countries
 
@@ -13,7 +13,7 @@ let countrieResult = countries
     let pagesVisited = pageNumber * countriesPerPage
     const displayCountries = countries.slice(pagesVisited, pagesVisited + countriesPerPage).map((c, i) =>{
         console.log(i)
-        return  <div className={i}>
+        return  <div className={style.countriesProps} key={i}>
 
         <Countrie
             name = {c.name}
@@ -29,19 +29,24 @@ let countrieResult = countries
     const changePage = ({selected}) => { 
         setPageNumber(selected)
     }
-    return (<div>
+    return (<div className={style.container}>
+        <div className={style.countries}>
 {displayCountries}
+</div>
+<div className={style.paginate}>
 <ReactPaginate 
 previousLabel={"previus"}
 nextLabel={"next"}
 pageCount={pageCount}
 onPageChange={changePage}
-containerClassName={"paginationBttns"}
-previousClassName= {"previusBttn"}
-nextLinkClassName={"nextBttn"}
-disabledClassName={"paginationDisabled"}
-activeClassName={"paginationActive"}/>
+containerClassName={style.paginationContainer}
+previousClassName= {style.previusBttn}
+nextLinkClassName={style.nextBttn}
+disabledClassName={style.disablePagination}
+activeClassName={style.activePagination}/>
+    </div>
     </div>)
+    
    } else {
        return(<div>No countries or countrie not found</div>)
    }

@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { getCountries } from "../redux/actions/TouristicActivities";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-export default function SearchBar({onSearch}) {
+export default function SearchBar() {
     let [countrie, setCountrie] = useState("")
     const dispatch = useDispatch();
-    console.log(countrie)
     return(<form onSubmit ={(e)=>{
         e.preventDefault();
         

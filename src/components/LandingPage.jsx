@@ -1,10 +1,9 @@
-import react from 'react'
+
 import { NavLink as Link }  from 'react-router-dom';
 import World from '../components/img/World.png'
 let style = require('./LandingPage.module.css')
 
 export default function LanginPage () {
-    console.log(style)
     return(
         <header>
             <div className={style.container}>

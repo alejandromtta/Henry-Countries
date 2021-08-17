@@ -1,9 +1,11 @@
 import {Link} from 'react-router-dom';
+import style from './Countrie.module.css'
 export default function Countrie({name,id,flag,continent, keys}) {
+    
 return (
-    <div key={keys}>
+    <div className= {style.countrie} key={keys}>
         <Link to={`/home/${id}`}>
-        <img src={flag} alt='uwu' width="300" height="300"/>
+        <img className={style.img}src={flag} alt='uwu' height="300px" width="300px" />
         </Link>
         <p>{name}</p>
         <p>{continent}</p>

@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
+
+.countrie {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap:wrap;
+    background: rgb(209, 198, 198);
+    height: 100%;
+    width: 55vh;
+    margin:15px;
+    border-radius:15px;
+   
+
+}
+
+.countrie img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap:wrap;
+    padding-top: 10px;
+    border-radius:9px;
+}
+
+.countrie p {
+    font-family:'Inconsolata', monospace;
+    margin: 5px;
+    font-size: 18px;
+}

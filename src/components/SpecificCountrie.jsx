@@ -10,7 +10,7 @@ let {id} = useParams()
 
 React.useEffect (() => {
 obtenerDatos()
-},[])
+},[])s
 
 const obtenerDatos = async () => {
 const data = await axios.get(`http://localhost:3000/countries/${id}`)

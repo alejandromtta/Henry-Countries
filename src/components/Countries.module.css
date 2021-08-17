@@ -1,0 +1,57 @@
+.container{
+    
+    background-color: rgb(228, 225, 225);
+    height:100%;
+    width:100%;
+}
+
+.countries {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 2px;
+    grid-row-gap: 20px;
+    
+    
+} 
+.countriesProps img:hover {
+    height: 40%;
+    width: 45%;
+}
+
+
+
+.paginationContainer{
+    text-decoration: none;
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-direction:row;
+   
+}
+
+.paginationContainer:nth-child(1n) {
+    padding: 12px;
+    color: black;
+}
+.previusBttn {
+    text-decoration: none;
+    padding: 5vh;
+   width: 15px;
+
+}
+
+.nextBttn {
+    padding: 5vh;
+    text-decoration: none;
+}
+
+.disablePagination {
+    text-decoration: none;
+    padding: 5vh;
+}
+
+.activePagination {
+    text-decoration: none;
+    padding: 5vh;
+}
