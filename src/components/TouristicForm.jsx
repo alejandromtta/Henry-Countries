@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getCountries } from "../redux/actions/TouristicActivities";
+import { getCountries, getCountriesID } from "../redux/actions/TouristicActivities";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function TouristicForm () {

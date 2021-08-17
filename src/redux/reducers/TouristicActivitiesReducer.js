@@ -1,5 +1,6 @@
 import {
   GET_COUNTRIES,
+  GET_COUNTRIES_ID,
   SET_ASC_DES,
   SET_ORDER,
 } from "../actions/TouristicActivities";
@@ -7,7 +8,7 @@ import {
 
 const initialState = {
   countries: [],
-  countryDetail: {},
+  countryName: [],
   activities: [],
   ord: null,
   asc: true,
@@ -20,6 +21,12 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         countries: action.payload,
+      };
+    }
+    case GET_COUNTRIES_ID: {
+      return {
+        ...state,
+        countriesName: action.payload,
       };
     }
     case SET_ORDER: {

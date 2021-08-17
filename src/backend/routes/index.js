@@ -24,13 +24,17 @@ router.get('/countries', async (req, res) => {
         let paises = await getCountriesFromDb
         paises = JSON.parse(paises)
         if (name) {
-            name = name.toLowerCase()
-            name = name.split('')
-            name[0] = name[0].toUpperCase()
-            name = name.join('')
+            name = name.toLowerCase().replace(/\+|%20/g, " ")
+            // name = name.split('')
+            // console.log(name)
+            // name[0] = name[0].toUpperCase()
+            // name = name.join('')
+           
             let filter;
             filter = paises.filter(data => {
-                if (data.name == name) {
+                let names = data.name
+                names = names.toLowerCase()
+                if (names == name) {
                     return data.name
                 }
 

@@ -36,6 +36,24 @@ export function getCountries  (name, id)  {
     }
 }
 
+export function getCountriesID (code) {
+  let route ='http//localhost:3000/countries'
+  return async function (dispatch) {
+    let result = await axios.get(route).then(d => {
+     let response =  d.data
+     let filtrado = response[0].map(c => {
+       return c.name
+     })
+     return filtrado;
+    })
+    dispatch({
+       type: GET_COUNTRIES_ID,
+       payload:!result
+       ?[]
+       : result
+    })
+  }
+}
 
 export function setOrder(ord) {
     return function (dispatch) {
