@@ -1,24 +1,20 @@
 import axios from "axios"
 import { useState } from "react"
 import {useParams} from "react-router-dom"
-import React from "react"
-
+import React, { useEffect } from "react";
+import { getCountries } from "../redux/actions/TouristicActivities";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function SpecificCountrie (){
-let [countries, setCountries] = useState([])
+    const dispatch = useDispatch();
+const countries = useSelector((state) => state.countries);
 let {id} = useParams()
 
-React.useEffect (() => {
-obtenerDatos()
-},[])s
+useEffect( () => {
+     dispatch(getCountries(null, id));
+  }, []);
 
-const obtenerDatos = async () => {
-const data = await axios.get(`http://localhost:3000/countries/${id}`)
-setCountries(oldCountrie => data.data)
 
-}
-const prueba = JSON.stringify(countries)
-console.log(countries)
 
 return(
 <div>

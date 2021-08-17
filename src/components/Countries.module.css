@@ -9,15 +9,12 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    /* te amo uwu */
     grid-column-gap: 2px;
     grid-row-gap: 20px;
     
     
 } 
-.countriesProps img:hover {
-    height: 40%;
-    width: 45%;
-}
 
 
 

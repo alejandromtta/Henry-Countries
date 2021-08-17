@@ -9,17 +9,16 @@ import style from './HomePage.module.css'
 
 export default   function HomePage (){
     // let [countries2, setCountries] = useState([])
-   
+    
     const dispatch = useDispatch();
     const countries = useSelector((state) => state.countries);
-    
     
     useEffect( () => {
          dispatch(getCountries());
       }, []);
 
-   
-console.log('a')
+    
+
 return(
     <div> 
         <SearchBar/>

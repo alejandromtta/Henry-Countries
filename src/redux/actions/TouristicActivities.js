@@ -6,6 +6,8 @@ export const ORDER_CONTINENT = 'ORDER_CONTINENT'
 export const ORDER_ASC_COUNTRIES = 'ORDER_ASC_COUNTRIES'
 export const ORDER_DES_COUNTRIES = 'ORDER_DES_COUNTRIES'
 export const GET_COUNTRIES_ID = 'GET_COUNTRIES_ID'
+export const SET_ORDER = "SET_ORDER";
+export const SET_ASC_DES = "SET_ASC_DES";
 export const post_activity_action = (data) => {
 return{ 
     type: POST_ACTIVITY,
@@ -33,3 +35,16 @@ export function getCountries  (name, id)  {
         
     }
 }
+
+
+export function setOrder(ord) {
+    return function (dispatch) {
+      dispatch({ type: SET_ORDER, payload: ord });
+    };
+  }
+  
+  export function setAscDes(type) {
+    return function (dispatch) {
+      dispatch({ type: SET_ASC_DES, payload: type });
+    };
+  }
