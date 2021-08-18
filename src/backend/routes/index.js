@@ -20,13 +20,13 @@ router.get('/', (req, res) => {
 router.get('/countries', async (req, res) => {
     try {
         let name = req.query.name
-
+         
         let paises = await getCountriesFromDb
         paises = JSON.parse(paises)
         if (name) {
-            name = name.toLowerCase().replace(/\+|%20/g, " ")
+            name = name.toLowerCase().replace(/%20|\+/g, '-');
             // name = name.split('')
-            // console.log(name)
+             console.log(name)
             // name[0] = name[0].toUpperCase()
             // name = name.join('')
            

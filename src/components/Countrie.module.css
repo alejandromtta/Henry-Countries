@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
 
-.countrie {
+.country {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,18 +15,24 @@
 
 }
 
-.countrie img {
+.country img {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap:wrap;
-    padding-top: 10px;
+    margin-top:15px;
     border-radius:9px;
+    border: black solid 1px;
 }
-
-.countrie p {
+.img {
+    height: 200px;;
+    width: 300px;
+    object-fit: cover;
+}
+.country p {
     font-family:'Inconsolata', monospace;
     margin: 5px;
     font-size: 18px;
 }
+

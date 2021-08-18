@@ -3,9 +3,9 @@ import style from './Countrie.module.css'
 export default function Countrie({name,id,flag,continent, keys}) {
     
 return (
-    <div className= {style.countrie} key={keys}>
+    <div className= {style.country} key={keys}>
         <Link to={`/home/${id}`}>
-        <img className={style.img}src={flag} alt='uwu' height="300px" width="300px" />
+        <img className={style.img} src={flag} alt='uwu'/>
         </Link>
         <p>{name}</p>
         <p>{continent}</p>
