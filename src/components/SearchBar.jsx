@@ -2,49 +2,62 @@ import React, { useEffect, useState } from "react";
 import {
 getCountries,
 setAscDes,
-setOrder,
+getActivity,
+setContinentOrd
 }from "../redux/actions/TouristicActivities";
 import { useDispatch, useSelector } from "react-redux";
-import './SearchBar.module.css';
+import style from'./SearchBar.module.css';
 export default function SearchBar() {
 let [countrie, setCountrie] = useState("")
 const [continent, setContinent] = useState(null);
-const [order, setOrd] = useState(null);
-const [asc, setAsc] = useState(true);
+const [order, setOrd] = useState({
+  ord: ''
+});
 const dispatch = useDispatch();
 
+
+function handleActivityChange(event) {
+  let boleani = event.target.value;
+dispatch(getActivity(boleani))
+}
 function handleCountryChange (event) {
 let name = event.target.value;
 setCountrie(name)
 }
 function handleSortChange(event) {
-let sort = event.target.value;
-setOrd(sort === "---" ? null : sort);
+setOrd({ord: event.target.value});
 }
 
 function handleOrdChange(event) {
-setAsc(event.target.value === "true" ? true : false);
+  let ascOption ={
+    asc: event.target.value
+  }
+dispatch(setAscDes(order,ascOption))
 }
 function handleContinentChange(event) {
 let cont = event.target.value;
 setContinent(cont === "Continent" ? null : cont);
+dispatch(setContinentOrd(cont))
 }
-return(<form onSubmit={(e)=>{
+return(<form className={style.container} onSubmit={(e)=>{
   e.preventDefault();
 
   dispatch(getCountries(countrie));
   ;
   }}>
-  <div className="filters">
+  <div >
     <span>Filters </span>
-    <select onChange={(e)=> handleContinentChange(e)}>
-      <option>Continent</option>
-      <option>Americas</option>
-      <option>Europe</option>
-      <option>Oceania</option>
-      <option>Asia</option>
-      <option>Africa</option>
+  <select onChange={(e)=> {handleContinentChange(e)}}>
+      <option>americas</option>
+      <option>europe</option>
+      <option>oceania</option>
+      <option>asia</option>
+      <option>africa</option>
     </select>
+    <select onChange={(e)=> {handleActivityChange(e)}}>
+    <option value={false}>----</option>
+      <option value={true}>activity</option>
+      </select>
   </div>
   <input type="text" placeholder="Search...." onChange={(e)=> handleCountryChange(e)}
   />
@@ -52,14 +65,15 @@ return(<form onSubmit={(e)=>{
   <div>
     <span>Order by: </span>
     <select onChange={(e)=> handleSortChange(e)}>
-      <option>---</option>
-      <option>Name</option>
-      <option>Population</option>
-      <option>Area</option>
+      <option key={0}>---</option>
+      <option key={1}>Name</option>
+      <option  key={2}>Population</option>
+      <option  key={3}>Area</option>
     </select>
     <select onChange={(e)=> handleOrdChange(e)}>
-      <option value={true}>Asc</option>
-      <option value={false}>Des</option>
+    <option>---</option>
+      <option >Asc</option>
+      <option >Des</option>
     </select>
   </div>
 </form>)

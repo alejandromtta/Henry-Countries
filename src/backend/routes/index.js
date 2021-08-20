@@ -4,9 +4,13 @@ const {
 const router = Router();
 const axios = require('axios')
 // const getCountries = require('../controllers/axios.controller')
-const {DbDataCountries }= require('../database/database.js')
-let  getCountriesFromDb = DbDataCountries
-let {UpdateDB} = require('../database/database')
+const {
+    DbDataCountries
+} = require('../database/database.js')
+let getCountriesFromDb = DbDataCountries
+let {
+    UpdateDB
+} = require('../database/database')
 
 let data;
 
@@ -19,17 +23,48 @@ router.get('/', (req, res) => {
 
 router.get('/countries', async (req, res) => {
     try {
+        //name nos dara el country por name
         let name = req.query.name
-         
+        //getNames nos dara los nombres de los paises
+        let getNames = req.query.getNames
+        //get contries by continent
+        let continent = req.query.continent
+
         let paises = await getCountriesFromDb
         paises = JSON.parse(paises)
+
+        if (getNames == "true") {
+            let filter;
+            filter = paises.map(data => {
+                return {
+                    country: data.name,
+                    id: data.ID
+                }
+            })
+            if (filter) {
+                return res.json(filter)
+            }
+        }
+        if(continent) {
+        let filter;
+            filter = paises.map(data => {
+                 let names = data.continent
+                names = names.toLowerCase()
+                if(names == continent && data !== null) {
+                   if(data !== null) {
+                       return data
+                   }
+                    
+                }
+            })
+            
+            if (filter) {
+                return res.json(filter)
+            }
+        }
+        
         if (name) {
             name = name.toLowerCase().replace(/%20|\+/g, '-');
-            // name = name.split('')
-             console.log(name)
-            // name[0] = name[0].toUpperCase()
-            // name = name.join('')
-           
             let filter;
             filter = paises.filter(data => {
                 let names = data.name
@@ -79,29 +114,46 @@ router.get('/countries/:id', async function (req, res) {
 
 })
 
+router.get('/continent', function(req, res) {
+
+})
 router.post('/countries', function (req, res) {
-let {nameCountrie, name, dificult, season, duration} = req.body;
+    let {
+        nameCountrie,
+        name,
+        dificult,
+        season,
+        duration
+    } = req.body;
 
-if(nameCountrie && name && duration && dificult && season){
-    data = {
-        countrie: nameCountrie,
-        name: name,
-        dificult: dificult,
-        season: season,
-        duration: duration
-    }
-    if(data) {
-        UpdateDB(data)
-        res.status(200).json({msg: "Actividad agregada correctamente"})
-        
-        
+    if (nameCountrie && name && duration && dificult && season) {
+        dificult = parseInt(dificult)
+        data = {
+            countrie: nameCountrie,
+            name: name,
+            dificult: dificult,
+            season: season,
+            duration: duration
+        }
+        if (data) {
+            UpdateDB(data)
+            res.status(200).json({
+                msg: "Actividad agregada correctamente"
+            })
+
+
+        } else {
+            res.status(404).json({
+                msg: 'Faltan parametros'
+            })
+        }
     } else {
-        res.status(404).json({msg: 'Faltan parametros'})
-    }
-}else {
-    res.status(404).json({msg: 'Faltan parametros'})
+        res.status(404).json({
+            msg: 'Faltan parametros'
+        })
 
-}})
+    }
+})
 
 
 module.exports = router;

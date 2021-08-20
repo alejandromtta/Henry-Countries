@@ -1,26 +1,25 @@
-import axios from "axios"
-import { useState } from "react"
+import style from "./SpecificCountrie.module.css"
 import {useParams} from "react-router-dom"
 import React, { useEffect } from "react";
 import { getCountries } from "../redux/actions/TouristicActivities";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function SpecificCountrie (){
-    const dispatch = useDispatch();
-const countries = useSelector((state) => state.countries);
+const dispatch = useDispatch();
+let countries = useSelector((state) => state.countries);
 let {id} = useParams()
-
+countries = countries.filter(Boolean);
 useEffect( () => {
-     dispatch(getCountries(null, id));
-  }, []);
+dispatch(getCountries(null, id));
+}, []);
 
 
 
 return(
-<div>
-    {countries.map( c => {
-    return <div>
-        <img src={c.flag} />
+<div className={style.container}>
+    {countries.map( (c, i) => {
+    return <div key={i} className={style.subContainer}>
+        <img className={style.flag} src={c.flag} />
         <h1>{c.name}</h1>
 
         <p>Alpha Code: {c.ID}</p>
@@ -31,7 +30,7 @@ return(
         <p>Population: {c.population} habitants.</p>
         <p>{c.TouristicActivitys? c.TouristicActivitys.map(d => {
             return <div>
-                <p>Touristic Activitie: {d.name}</p>
+                <h3>Touristic Activitie: {d.name}</h3>
                 <p>Dificult: {d.dificult}</p>
                 <p>Duration: {d.duration}</p>
                 <p>Season: {d.season}</p>

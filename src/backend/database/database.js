@@ -75,7 +75,10 @@ let UpdateDB  = (data) => {
     sequelize.sync({
         alter: true
     }).then(async () => {
-        let countrie = await Countries.findOne({ where: { name: data.countrie } })
+        
+        for(let i = 0; i < data.countrie.length; i++) {
+            
+            let countrie = await Countries.findOne({ where: { ID: data.countrie[i] } })
             if (countrie){
               let  TA = await TouristicActivity.create({
                     name: data.name,
@@ -84,6 +87,8 @@ let UpdateDB  = (data) => {
                    season: data.season 
                 })
                await countrie.addTouristicActivity(TA);
+        }
+        
              }
     })
 }

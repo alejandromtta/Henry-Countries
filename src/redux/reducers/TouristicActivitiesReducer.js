@@ -2,13 +2,14 @@ import {
   GET_COUNTRIES,
   GET_COUNTRIES_ID,
   SET_ASC_DES,
-  SET_ORDER,
+  GET_ACTIVITY,
+  ORDER_CONTINENT
 } from "../actions/TouristicActivities";
 
 
 const initialState = {
   countries: [],
-  countryName: [],
+  countriesName: [],
   activities: [],
   ord: null,
   asc: true,
@@ -29,17 +30,23 @@ function reducer(state = initialState, action) {
         countriesName: action.payload,
       };
     }
-    case SET_ORDER: {
+    case ORDER_CONTINENT: {
       return {
         ...state,
-        ord: action.payload,
+        countries: action.payload,
       };
     }
     case SET_ASC_DES: {
       return {
         ...state,
-        asc: action.payload,
+        countries: action.payload,
       };
+    }
+    case GET_ACTIVITY: {
+      return {
+        ...state,
+        countries: action.payload,
+      }
     }
     default: {
       return state;

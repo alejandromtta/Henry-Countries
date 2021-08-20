@@ -1,0 +1,10 @@
+.container {
+    padding-top: 15px;
+    background:rgb(228, 225, 225);
+    display: flex;
+    justify-content: start;
+    text-align: center;
+    flex-direction: column;
+    font-family:'Inconsolata', monospace;
+    height: 95vh;
+}

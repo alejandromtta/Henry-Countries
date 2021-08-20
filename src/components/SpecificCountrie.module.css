@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+.container {
+    background:rgb(228, 225, 225);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    font-family:'Inconsolata', monospace;
+}
+
+.subcontainer{
+   padding-top:15px;
+    margin-top: 15px;
+}
+.flag{
+    margin-top: 15px;
+    height: 500px;
+    width: 800px;
+    border-radius:9px;
+    object-fit: cover;
+}
