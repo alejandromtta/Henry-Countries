@@ -2,7 +2,6 @@ import style from './Countries.module.css'
 import ReactPaginate from 'react-paginate'
 import Countrie from './Countrie'
 import {useState} from 'react'
-import Pagination from './Pagination.jsx'
 export default function Countries ({countries}) {
     let [pageNumber, setPageNumber] = useState(0)
 let countrieResult = countries
@@ -38,11 +37,6 @@ let countrieResult = countries
 {displayCountries}
 </div>
 <div className={style.paginate}>
-<paginate
-countriesPerPage={countriesPerPage}
-totalCountries={250}
-paginate={changePage}
-/>
 <ReactPaginate 
 previousLabel={"previus"}
 nextLabel={"next"}
