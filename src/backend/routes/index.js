@@ -45,24 +45,24 @@ router.get('/countries', async (req, res) => {
                 return res.json(filter)
             }
         }
-        if(continent) {
-        let filter;
+        if (continent) {
+            let filter;
             filter = paises.map(data => {
-                 let names = data.continent
+                let names = data.continent
                 names = names.toLowerCase()
-                if(names == continent && data !== null) {
-                   if(data !== null) {
-                       return data
-                   }
-                    
+                if (names == continent && data !== null) {
+                    if (data !== null) {
+                        return data
+                    }
+
                 }
             })
-            
+
             if (filter) {
                 return res.json(filter)
             }
         }
-        
+
         if (name) {
             name = name.toLowerCase().replace(/%20|\+/g, '-');
             let filter;
@@ -114,22 +114,22 @@ router.get('/countries/:id', async function (req, res) {
 
 })
 
-router.get('/continent', function(req, res) {
+router.get('/continent', function (req, res) {
 
 })
 router.post('/countries', function (req, res) {
     let {
-        nameCountrie,
+        nameCountries,
         name,
         dificult,
         season,
         duration
     } = req.body;
 
-    if (nameCountrie && name && duration && dificult && season) {
+    if (nameCountries && name && duration && dificult && season) {
         dificult = parseInt(dificult)
         data = {
-            countrie: nameCountrie,
+            countrie: nameCountries,
             name: name,
             dificult: dificult,
             season: season,

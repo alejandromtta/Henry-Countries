@@ -7,7 +7,7 @@ return (
         <Link to={`/home/${id}`}>
         <img className={style.img} src={flag} alt='uwu'/>
         </Link>
-        <p>{name}</p>
+        <h5>{name}</h5>
         <p>{continent}</p>
     </div>
 )

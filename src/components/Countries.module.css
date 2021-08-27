@@ -1,45 +1,60 @@
 .container{
-    
-    background-color: rgb(228, 225, 225);
-    height:100%;
-    width:100%;
+    margin-top: 2%;
+    background:rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    text-align: center;
+    align-items: center;
+    width:95vw;
 }
 
 .countries {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    grid-column-gap: 2px;
-    grid-row-gap: 20px;
-    
-    
+    grid-column-gap:10%;
+    grid-row-gap:5%;
+    margin-left: 5%;
+    width: 100%;
 } 
 
 
 
 .paginationContainer{
+    
+    margin-top:9%;
     text-decoration: none;
     display: flex;
     justify-content:space-between;
     align-items:center;
     flex-direction:row;
-   
+   width:85vw;
+   list-style: none;
+   font-family: Inter;
+   font-style: normal;
+   font-weight: normal;
 }
 
 .paginationContainer:nth-child(1n) {
     padding: 12px;
     color: black;
 }
+.paginationContainer li:hover{
+    color: rgb(138, 105, 105);
+}
 .previusBttn {
     text-decoration: none;
     padding: 5vh;
    width: 15px;
-
+   
+   font-weight: bold;
 }
 
 .nextBttn {
     padding: 5vh;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .disablePagination {
@@ -50,4 +65,9 @@
 .activePagination {
     text-decoration: none;
     padding: 5vh;
+}
+
+.footer{
+  
+   width: 100vw;
 }

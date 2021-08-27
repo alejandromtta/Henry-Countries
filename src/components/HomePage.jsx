@@ -4,7 +4,7 @@ import { getCountries } from "../redux/actions/TouristicActivities";
 import { useDispatch, useSelector } from "react-redux";
 import Countries from './Countries'
 import SearchBar from './SearchBar'
-//import axios from 'axios'
+
 import style from './HomePage.module.css'
 
 export default   function HomePage (){
@@ -24,6 +24,7 @@ return(
         <SearchBar/>
         <div className={style.countries}>
         <Countries countries={countries}/>
+        
         </div>
         
     </div>

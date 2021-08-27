@@ -10,12 +10,12 @@ import About from "./components/About"
 function App() {
   return (
     <React.Fragment>
-    <div className="App">
+    <div id="App">
+    <Route  path="/" component={NavBar} />
       <Route exact path="/" component={LandingPage} />
-      <Route  path="/." component={NavBar} />
       <Route exact path="/./about" component={About} />
       <Route exact path="/./touristicForm" component={TouristicForm} />
-      <Route  path="/home"  component={NavBar} />
+     
       <Route exact path="/home" component={HomePage} />
       <Route path="/home/:id">
       <SpecificCountrie/>

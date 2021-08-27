@@ -2,6 +2,7 @@ import style from './Countries.module.css'
 import ReactPaginate from 'react-paginate'
 import Countrie from './Countrie'
 import {useState} from 'react'
+import footer from './img/icons/footer.png'
 export default function Countries ({countries}) {
     let [pageNumber, setPageNumber] = useState(0)
 let countrieResult = countries
@@ -48,6 +49,7 @@ nextLinkClassName={style.nextBttn}
 disabledClassName={style.disablePagination}
 activeClassName={style.activePagination}/>
     </div>
+    <img src={footer} className={style.footer} alt='footer'/>
     </div>)
     
    } else {

@@ -45,32 +45,33 @@ return(<form className={style.container} onSubmit={(e)=>{
   dispatch(getCountries(countrie));
   ;
   }}>
-  <div >
+  <div>
     <span>Filters </span>
-  <select onChange={(e)=> {handleContinentChange(e)}}>
+  <select className={style.selects} onChange={(e)=> {handleContinentChange(e)}}>
       <option>americas</option>
       <option>europe</option>
       <option>oceania</option>
       <option>asia</option>
       <option>africa</option>
     </select>
-    <select onChange={(e)=> {handleActivityChange(e)}}>
+    <select  className={style.selects} onChange={(e)=> {handleActivityChange(e)}}>
     <option value={false}>----</option>
       <option value={true}>activity</option>
       </select>
   </div>
-  <input type="text" placeholder="Search...." onChange={(e)=> handleCountryChange(e)}
+  <input className={style.input} type="text" placeholder="Search...." onChange={(e)=> handleCountryChange(e)}
   />
-  <input type="submit" value="Search" />
+  <input className={style.submit}type="submit" value="Search" />
   <div>
     <span>Order by: </span>
-    <select onChange={(e)=> handleSortChange(e)}>
+    <select className={style.selects} onChange={(e)=> handleSortChange(e)}>
       <option key={0}>---</option>
       <option key={1}>Name</option>
       <option  key={2}>Population</option>
       <option  key={3}>Area</option>
+      <i></i>
     </select>
-    <select onChange={(e)=> handleOrdChange(e)}>
+    <select className={style.selects} onChange={(e)=> handleOrdChange(e)}>
     <option>---</option>
       <option >Asc</option>
       <option >Des</option>
